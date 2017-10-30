@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title> kupo! </title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/styles.css')}}">
+    <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    <![endif]-->
+  </head>
+  <body>
+      <canvas id="mog" width="100" height="100" />
+      <script>
+        function dance() {
+          var canvas = document.getElementById("mog");
+          var context = canvas.getContext("2d");
+          var randomMogY = Math.floor(Math.random() * 3);
+          var randomMogX = (randomMogY == 2) ? 0 : (Math.floor(Math.random() * 6));
+          var mog = new Image();
+          mog.addEventListener('load', function () {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.drawImage(mog, 96 * randomMogX, 100 * randomMogY, this.width, this.height, 0, 0, this.width, this.height);
+          }, false);
+          mog.src = "{{url_for('static', filename='images/ffvi-mog-sprite.png')}}";
+        };
+        setInterval(dance, 250);
+      </script>
+  </body>
+</html>
