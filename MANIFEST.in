@@ -1,0 +1,2 @@
+recursive-include moogledance/templates *
+recursive-include moogledance/static *
